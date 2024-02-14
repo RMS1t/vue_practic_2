@@ -18,6 +18,20 @@ let app = new Vue({
                         a: 1
                     }
                 ]
+            },
+            {
+                column: 2,
+                time_stamp:null,
+                task_list: [
+                    {
+                        title: 1,
+                        done: false
+                    },
+                    {
+                        t: 1,
+                        a: 1
+                    }
+                ]
             }
 
         ],
