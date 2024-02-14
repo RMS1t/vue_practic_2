@@ -12,49 +12,60 @@
 <body>
 <div id="app">
 
-  <div style="display: flex">
-<!--    first-->
-    <div v-for="(task_item, itemId) in tasks" :key="itemId">
+  <div style="display: flex; justify-content: space-around">
+    <form class="col_wid">
+      123
+    </form>
+
+<div class="col_wid">
+    <div v-for="(task_item, itemId) in tasks" :key="itemId"  class="Task">
 
       <div v-if="task_item.column==1">
-      <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="Task">
-
-        <p>{{subTask.title}}</p>
-       <div v-if="subTask.done==true">
-         DONE
-       </div>
-        <div v-else>
-          <button v-if="!done_blocker" @click="toReady(itemId, subId)"  >Done</button>
-          <p v-else>Please wait</p>
-        </div>
-      </div>
-      </div>
-    </div>
-    <!-- second   -->
-    <div v-for="(task_item, itemId) in tasks" :key="itemId">
-
-      <div v-if="task_item.column==2">
-        <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="Task">
+        <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="subTask" >
 
           <p>{{subTask.title}}</p>
           <div v-if="subTask.done==true">
             DONE
           </div>
           <div v-else>
-            <button  @click="toReady(itemId, subId)"  >Done</button>
+            <button v-if="!done_blocker" @click="toReady(itemId, subId)"  >Done</button>
+            <p v-else>Please wait</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- third  -->
-    <div v-for="(task_item, itemId) in tasks" :key="itemId">
+</div>
 
-      <div v-if="task_item.column==3">
-        <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="Task">
+    <div class="col_wid">
+      <div v-for="(task_item, itemId) in tasks" :key="itemId"  >
 
-          <p>{{subTask.title}}</p>
-          <div>
-            DONE
+        <div v-if="task_item.column==2">
+          <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="Task" >
+
+            <p>{{subTask.title}}</p>
+            <div v-if="subTask.done==true">
+              DONE
+            </div>
+            <div v-else>
+              <button  @click="toReady(itemId, subId)"  >Done</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col_wid">
+      <div v-for="(task_item, itemId) in tasks" :key="itemId"  >
+
+        <div v-if="task_item.column==3">
+          <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="Task" >
+
+            <p>{{subTask.title}}</p>
+            <div v-if="subTask.done==true">
+              DONE
+            </div>
           </div>
         </div>
       </div>
@@ -63,6 +74,18 @@
   </div>
 
 
+<!--  <div v-for="(task_item, itemId) in tasks" :key="itemId"  class="col_wid">-->
+
+<!--    <div v-if="task_item.column==3">-->
+<!--      <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="Task">-->
+
+<!--        <p>{{subTask.title}}</p>-->
+<!--        <div>-->
+<!--          DONE-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
 
 

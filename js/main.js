@@ -20,7 +20,7 @@ let app = new Vue({
                 ]
             },
             {
-                column: 2,
+                column: 1,
                 time_stamp:null,
                 task_list: [
                     {

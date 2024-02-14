@@ -3,10 +3,23 @@ body {
     color:#282828;
     margin: 0px;
 }
-.Task{
-    width: 150px;
+.subTask {
+
     border-style: dashed;
     display: flex;
+    justify-content: space-between;
+
+}
+.Task{
+    border-style: double;
+    margin-top: 10px;
+}
+.col_wid{
+    width: 20%;
+    background: wheat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .nav-bar {
