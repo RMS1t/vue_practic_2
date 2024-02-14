@@ -60,35 +60,8 @@ let app = new Vue({
             }
 
         },
-        checker_done(id){
-            counter_task=3
-            counter_done=0
-               if (this.tasks[id]['first'][1]== true){
-                    counter_done++
-               }
-               if (this.tasks[id]['second'][1]== true){
-                   counter_done++
-               }
-               if (this.tasks[id]['third'][1]== true){
-                   counter_done++
-               }
-               if (this.tasks[id]['fourth']) {
-                   counter_task++
-                   if ((this.tasks[id]['fourth'][1]== true)){
-                       counter_done++
-                   }
-               }
-               if (this.tasks[id]['fifth']) {
-                   counter_task++
-                   if ((this.tasks[id]['fifth'][1]== true)){
-                       counter_done++
-                   }
 
 
-
-           }
-
-        },
         add_task(){
             if (this.first &&this.second &&this.third){
 
@@ -119,9 +92,12 @@ let app = new Vue({
 
 
         },
-        task_done(){
+        toReady(task, subTask){
+            subTask.done = true;
+            
+                    console.log(task.column);
 
-        },
+        }
 
 
 

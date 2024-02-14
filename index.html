@@ -13,7 +13,7 @@
 <div id="app">
 
   <div style="display: flex; justify-content: space-around">
-    <form class="col_wid">
+    <form v-if="!add_blocker" class="col_wid">
       123
     </form>
 
@@ -28,7 +28,7 @@
             DONE
           </div>
           <div v-else>
-            <button v-if="!done_blocker" @click="toReady(itemId, subId)"  >Done</button>
+            <button v-if="!done_blocker" @click="toReady(task_item, subTask)">Done</button>
             <p v-else>Please wait</p>
           </div>
         </div>
