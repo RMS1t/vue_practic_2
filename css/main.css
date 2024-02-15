@@ -3,6 +3,12 @@ body {
     color:#282828;
     margin: 0px;
 }
+.forms{
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
 .subTask {
 
     border-style: dashed;

@@ -4,32 +4,7 @@ let app = new Vue({
     data: {
         done_blocker: false,
         add_blocker: false,
-        tasks: [
-            // {
-            //     column: 1,
-            //     time_stamp: null,
-            //     task_list: [
-            //         {
-            //             title: 1,
-            //             done: false
-            //         },
-            //         {
-            //             title: 2,
-            //             done: false
-            //         },
-            //         {
-            //             title: 3,
-            //             done: false
-            //         },
-            //         {
-            //             title: 4,
-            //             done: false
-            //         },
-            //     ]
-            // },
-
-
-        ],
+        tasks:[],
 
 
         first: null,
@@ -42,6 +17,15 @@ let app = new Vue({
         errors: []
     },
     methods: {
+        checker_done(){
+            count = 0;
+            for (i = 0; i < this.tasks.length; i++) {
+                if (this.tasks[i]["column"] == 1) {
+                    this.toNextColumn(this.tasks[i])
+                }
+
+            }
+        },
         toNextColumn(task) {
             task_checker = 0
             done_checker = 0
@@ -125,21 +109,21 @@ let app = new Vue({
         },
         add_task() {
             if (this.first && this.second && this.third) {
-
+                console.log(this.second)
                 let task = {
                     column: 1,
                     time_stamp: null,
                     task_list: [
-                        {title: toString(this.first), done: false},
-                        {title: toString(this.second), done: false},
-                        {title: toString(this.third), done: false},
+                        {title: this.first, done: false},
+                        {title: this.second, done: false},
+                        {title: this.third, done: false},
                     ]
                 }
                 if (this.fourth) {
-                    task.task_list.push({title: toString(this.fourth), done: false})
+                    task.task_list.push({title: this.fourth, done: false})
                 }
                 if (this.fifth) {
-                    task.task_list.push({title: toString(this.fifth), done: false})
+                    task.task_list.push({title: this.fifth, done: false})
                 }
 
                 this.tasks.push(task)
@@ -159,6 +143,18 @@ let app = new Vue({
 
         },
 
+
+    },
+    created(){
+        const savedTasks=JSON.parse(localStorage.getItem('tasks'))
+        if (savedTasks){
+            this.tasks=savedTasks;
+            this.checker_add()
+            this.checker_done()
+        }
+    },
+    updated(){
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
 
     }
 
