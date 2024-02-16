@@ -6,7 +6,7 @@ let app = new Vue({
         add_blocker: false,
         tasks:[],
 
-
+        name: null,
         first: null,
         second: null,
         third: null,
@@ -108,9 +108,9 @@ let app = new Vue({
             }
         },
         add_task() {
-            if (this.first && this.second && this.third) {
-                console.log(this.second)
+            if (this.first && this.second && this.third && this.name) {
                 let task = {
+                    name: this.name,
                     column: 1,
                     time_stamp: null,
                     task_list: [
@@ -125,10 +125,17 @@ let app = new Vue({
                 if (this.fifth) {
                     task.task_list.push({title: this.fifth, done: false})
                 }
+                this.name=null;
+                this.first=null
+                this.second=null
+                this.third=null
+                this.fourth=null
+                this.fifth=null
 
                 this.tasks.push(task)
                 this.checker_add()
             } else {
+                if (!this.first) this.errors.push("name required.")
                 if (!this.first) this.errors.push("1st required.")
                 if (!this.second) this.errors.push("2nd required.")
                 if (!this.third) this.errors.push("3thd required.")
@@ -156,8 +163,12 @@ let app = new Vue({
     updated(){
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
 
+    },
+    computed: {
+        isButtonEnabled() {
+            return true
+        },
     }
-
 
 }
 )

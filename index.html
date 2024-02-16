@@ -20,7 +20,10 @@
           <li v-for="error in errors">{{ error }}</li>
         </ul>
         </p>
-
+        <p>
+        <label for="name">name:</label>
+        <input id="name" v-model="name" placeholder="yours task(req)">
+        </p>
         <p>
           <label for="1">1st:</label>
           <input id="1" v-model="first" placeholder="yours task(req)">
@@ -35,27 +38,35 @@
         <label for="3">3rd:</label>
         <input id="3" v-model="third" placeholder="yours task(req)">
       </p>
-
+      <div  v-if="((first !=null) && (first !='')) && (second !=null && (second !='')) && (third !=null && (third !=''))">
       <p>
         <label for="4">4th:</label>
         <input id="4" v-model="fourth" placeholder="yours task(opt)">
       </p>
+          <div v-if="((fourth !=null) && (fourth !=''))">
       <p>
         <label for="5">5th:</label>
         <input id="5" v-model="fifth" placeholder="yours task(opt)">
       </p>
+          </div>
+          <div v-if="((name !=null) && (name !=''))">
+              <p>
+                  <input type="submit" value="Submit">
+              </p>
+          </div>
 
-        <p>
-          <input type="submit" value="Submit">
-        </p>
+      </div>
+
+
 
       </form>
 
 
 <div class="col_wid">
     <div v-for="(task_item, itemId) in tasks" :key="itemId"  class="Task">
-
       <div v-if="task_item.column==1">
+      <p>{{task_item.name}}</p>
+
         <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="subTask" >
 
           <p>{{subTask.title}}</p>
@@ -75,6 +86,7 @@
       <div v-for="(task_item, itemId) in tasks" :key="itemId"  class="Task">
 
         <div v-if="task_item.column==2">
+          <p>{{task_item.name}}</p>
           <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="subTask" >
 
             <p>{{subTask.title}}</p>
@@ -94,6 +106,7 @@
       <div v-for="(task_item, itemId) in tasks" :key="itemId"  class="Task">
 
         <div v-if="task_item.column==3">
+          <p>{{task_item.name}}</p>
           <div class="subTask"> Timestamp: {{task_item.time_stamp}}</div>
           <div v-for="(subTask, subId) in task_item.task_list" :key="subId" class="subTask" >
 
